@@ -14,8 +14,18 @@ class build_ext(_build_ext):
         _build_ext.build_extensions(self)
 
 setup(
+    name='algorithms',
+    version='0.0.1',
+    description="algorithms",
+    long_description="",
+    classifiers=[
+        "License :: OSI Approved :: GPLv3 License",
+        'Programming Language :: Python :: 3.3',
+    ],
+    author='Douglas La Rocca',
+    packages=['algorithms'],
     cmdclass={'build_ext': build_ext},
-    ext_modules=[Extension("lib", ["lib.pyx"]),
-                 Extension("gray_code",["combinatorial/gray_code.pyx"]),
-                 Extension("gcc_builtin",["utils/gcc_builtin.pyx"])]
+    ext_modules=[Extension("algorithms.lib", ["algorithms/lib.pyx"]),
+                 Extension("algorithms.gray_code",["algorithms/combinatorial/gray_code.pyx"]),
+                 Extension("algorithms.gcc_builtin",["algorithms/utils/gcc_builtin.pyx"])]
 )
