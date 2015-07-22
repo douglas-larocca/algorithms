@@ -1,14 +1,5 @@
-import numpy as np
 
-cimport cython
-cimport numpy as np
-
-np.import_array()
-
-"""gray codes
-"""
-
-def composition_gray_code(int n):
+def composition_gray_code(n):
     '''
     gray code for integer compositions
 
@@ -32,17 +23,12 @@ def composition_gray_code(int n):
     Mathematical Modelling and Algorithms 9(4) 343-356. 
     2010-12-01. 10.1007/s10852-010-9131-3
     '''
-    cdef int pos = 1
-    a = np.zeros((n+1,), dtype=np.int64)
-    a[0] = n
-    
-    yield a
-    
+    a = [0]*(n+1)
+    yield [n]+[0]*(n-1)
     a[1] = 1
     a[2] = n - 1
-    
+    pos = 1
     yield a[1:]
-    
     while pos > 0:
         if a[pos + 1] > 1:
             pos += 1
